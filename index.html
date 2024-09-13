@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="menuApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Filter App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+    <style>
+        .menu-item {
+            margin-bottom: 15px;
+        }
+
+        .menu-item button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body ng-controller="MenuController">
+
+    <div>
+        <input type="text" ng-model="searchText" placeholder="Search the menu..." />
+        <button ng-click="narrowItDown()">Narrow It Down For Me!</button>
+    </div>
+
+    <div >
+        <ul>
+            <li ng-repeat="item in foundItems" class="menu-item">
+                <!-- {{item.name}}, {{item.short_name}}, {{item.description}} -->
+                <button ng-click="removeItem($index)">Don't want this one!</button>
+            </li>
+        </ul>
+    </div>
+
+    <p ng-if="foundItems.length === 0 && searchPerformed">Nothing found</p>
+
+
+
+</body>
+
+</html>
